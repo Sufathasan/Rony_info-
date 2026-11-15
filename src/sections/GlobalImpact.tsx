@@ -14,8 +14,8 @@ export function GlobalImpact({ language }: GlobalImpactProps) {
     <section id="global-impact" className="section-shell bg-gradient-to-b from-white to-slate-100/80 dark:from-midnight dark:to-slate-900/80">
       <div className="container-shell">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }} className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-3 shadow-card dark:border-white/10 dark:bg-slate-900/80">
-            <img src={profile.summitImage} alt="Global Youth Impact Summit 2027" className="h-[520px] w-full rounded-[1.5rem] object-cover" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-white via-ivory to-royalGold/10 p-3 shadow-card dark:border-white/10 dark:from-slate-900 dark:via-slate-900 dark:to-royalGold/10">
+            <img src={profile.summitImage} alt="Global Youth Impact Summit 2027 event artwork" loading="lazy" className="mx-auto max-h-[560px] w-full rounded-[1.5rem] object-contain" />
           </div>
 
           <div>
@@ -23,6 +23,7 @@ export function GlobalImpact({ language }: GlobalImpactProps) {
             <h2 className="section-title">{t.heading}</h2>
             <div className="mt-6 rounded-3xl border border-royalGold/30 bg-royalGold/8 p-5">
               <div className="flex flex-wrap items-center gap-3 text-sm text-slate-700 dark:text-slate-200">
+                <span className="rounded-full bg-royalGold px-3 py-1 font-semibold text-midnight">Upcoming</span>
                 <span className="rounded-full border border-royalGold/40 bg-royalGold/10 px-3 py-1 font-semibold text-royalGold">Selected / Registered International Delegate</span>
                 <span>•</span>
                 <span>Paris, France</span>

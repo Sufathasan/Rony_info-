@@ -1,6 +1,6 @@
 # Md Mahmudul Hasan Rony | Premium Banking Portfolio
 
-Live Portfolio Website: https://sufathasan.github.io/Rony_info-/
+**Live Portfolio Website:** [https://sufathasan.github.io/Rony_info-/](https://sufathasan.github.io/Rony_info-/)
 
 A modern static portfolio website for Md Mahmudul Hasan Rony, built with React, Vite, Tailwind CSS, and Framer Motion. The site is designed for a premium banking and financial services brand with a dark-light theme, Bangla/English language switching, and GitHub Pages deployment readiness.
 

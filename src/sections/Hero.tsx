@@ -63,11 +63,11 @@ export function Hero({ language }: HeroProps) {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} className="relative">
             <div className="absolute -left-6 top-8 h-32 w-32 rounded-full border border-royalGold/25 bg-royalGold/10 blur-2xl" />
             <div className="absolute -right-6 bottom-10 h-28 w-28 rounded-full border border-slate-300 bg-slate-200/40 blur-2xl dark:border-white/10 dark:bg-white/10" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-3 shadow-card dark:border-white/10 dark:bg-slate-900/70">
+            <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-ivory via-white to-royalGold/10 p-3 shadow-card dark:border-white/10 dark:from-slate-900 dark:via-slate-900 dark:to-royalGold/10">
               <img
                 src={profile.portrait}
-                alt={profile.name}
-                className="h-[620px] w-full rounded-[1.6rem] object-cover object-center"
+                alt={`Portrait of ${profile.name}`}
+                className="h-[420px] w-full rounded-[1.6rem] object-contain object-center sm:h-[520px] lg:h-[620px]"
               />
             </div>
           </motion.div>

@@ -3,8 +3,6 @@ import { Navbar } from './components/Navbar';
 import { BackToTop } from './components/BackToTop';
 import { Footer } from './components/Footer';
 import { ContactSection } from './components/ContactSection';
-import { Gallery } from './components/Gallery';
-import { galleryItems } from './data/gallery';
 import { profile } from './data/profile';
 import { translations, type Language } from './data/translations';
 import { useLanguage } from './hooks/useLanguage';
@@ -51,7 +49,6 @@ function App() {
       { id: 'education', label: translations[language].nav.education },
       { id: 'global-impact', label: translations[language].nav.globalImpact },
       { id: 'international-exposure', label: translations[language].nav.exposure },
-      { id: 'gallery', label: translations[language].nav.gallery },
       { id: 'personal', label: translations[language].nav.personal },
       { id: 'contact', label: translations[language].nav.contact }
     ],
@@ -86,14 +83,6 @@ function App() {
           <GlobalImpact language={language} />
           <InternationalExposure language={language} />
           <MediaCoverage />
-          <section id="gallery" className="section-shell bg-slate-100/80 dark:bg-slate-900/40">
-            <div className="container-shell">
-              <div className="mb-10">
-                <SectionHeading eyebrow="Portfolio" title={translations[language].gallery.heading} subtitle={translations[language].gallery.subtitle} />
-              </div>
-              <Gallery items={galleryItems} />
-            </div>
-          </section>
           <Personal language={language} />
           <section id="contact" className="section-shell">
             <div className="container-shell">

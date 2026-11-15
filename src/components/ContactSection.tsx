@@ -29,17 +29,17 @@ export function ContactSection({ cvUrl }: ContactSectionProps) {
                 href={href}
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-midnight transition hover:border-royalGold hover:text-royalGold dark:border-white/10 dark:bg-slate-900 dark:text-white"
+                className="group inline-flex min-h-12 items-center gap-2.5 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-midnight shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-royalGold hover:bg-royalGold/5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royalGold focus-visible:ring-offset-2 dark:border-white/15 dark:bg-slate-900 dark:text-white dark:hover:bg-royalGold/10 dark:focus-visible:ring-offset-slate-900"
               >
-                <Icon size={16} />
+                <Icon size={18} strokeWidth={2.25} className="text-royalGold transition-transform group-hover:scale-110" aria-hidden="true" />
                 {label}
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={15} className="text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
               </a>
             ))}
             <a
               href={cvUrl}
               download
-              className="inline-flex items-center gap-2 rounded-full bg-royalGold px-4 py-2.5 text-sm font-semibold text-midnight transition hover:brightness-95"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-xl bg-royalGold px-4 py-3 text-sm font-bold text-midnight shadow-sm transition duration-200 hover:-translate-y-0.5 hover:brightness-95 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royalGold focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900"
             >
               <Download size={16} />
               Download CV

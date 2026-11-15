@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import { profile } from '../data/profile';
 
 export function Footer() {
@@ -9,9 +9,9 @@ export function Footer() {
           <div className="font-display text-xl font-semibold text-midnight dark:text-white">{profile.name}</div>
           <p className="mt-1">Banking & Financial Services Professional</p>
         </div>
-        <div className="flex items-center gap-2">
-          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-royalGold">
-            LinkedIn <ArrowUpRight size={14} />
+        <div className="flex items-center gap-3">
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Connect with Md Mahmudul Hasan Rony on LinkedIn" title="LinkedIn profile" className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#0A66C2] text-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-[#004182] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A66C2] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-midnight">
+            <Linkedin size={21} strokeWidth={2.5} aria-hidden="true" />
           </a>
           <span>•</span>
           <span>All rights reserved.</span>

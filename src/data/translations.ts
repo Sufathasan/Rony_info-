@@ -10,7 +10,6 @@ export type TranslationMap = {
   skills: Record<string, string>;
   globalImpact: Record<string, string>;
   exposure: Record<string, string>;
-  gallery: Record<string, string>;
   personal: Record<string, string>;
   contact: Record<string, string>;
   references: Record<string, string>;
@@ -27,7 +26,6 @@ export const translations: Record<Language, TranslationMap> = {
       education: 'Education',
       globalImpact: 'Global Impact',
       exposure: 'International Exposure',
-      gallery: 'Gallery',
       personal: 'Personal',
       contact: 'Contact'
     },
@@ -88,10 +86,6 @@ export const translations: Record<Language, TranslationMap> = {
       heading: 'International Exposure & Global Perspectives',
       subtitle: 'Countries visited'
     },
-    gallery: {
-      heading: 'Professional Moments & Experiences',
-      subtitle: 'A visual collection of professional moments, partnerships, events, achievements, and personal journeys.'
-    },
     personal: {
       heading: 'Personal Life',
       caption: 'With Family'
@@ -127,7 +121,6 @@ export const translations: Record<Language, TranslationMap> = {
       education: 'শিক্ষা',
       globalImpact: 'গ্লোবাল ইমপ্যাক্ট',
       exposure: 'আন্তর্জাতিক এক্সপোজার',
-      gallery: 'গ্যালারি',
       personal: 'ব্যক্তিগত',
       contact: 'যোগাযোগ'
     },
@@ -187,10 +180,6 @@ export const translations: Record<Language, TranslationMap> = {
     exposure: {
       heading: 'আন্তর্জাতিক এক্সপোজার ও বৈশ্বিক দৃষ্টিভঙ্গি',
       subtitle: 'পরিদর্শিত দেশসমূহ'
-    },
-    gallery: {
-      heading: 'পেশাদার মুহূর্ত ও অভিজ্ঞতা',
-      subtitle: 'পেশাদার মুহূর্ত, পার্টনারশিপ, ইভেন্ট, কৃতিত্ব ও ব্যক্তিগত যাত্রার ভিজ্যুয়াল সংগ্রহ।'
     },
     personal: {
       heading: 'ব্যক্তিগত জীবন',
