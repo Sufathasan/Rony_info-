@@ -176,6 +176,62 @@
 			"isBackground": false,
 			"problemMatcher": [],
 			"group": "build"
+		},
+		{
+			"label": "Push project to GitHub main branch",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; git push -u origin main",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Run local dev server for verification",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; npm run dev -- --host 0.0.0.0",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Verify the app is serving HTTP",
+			"type": "shell",
+			"command": "Invoke-WebRequest -Uri 'http://localhost:5173' -UseBasicParsing | Select-Object -ExpandProperty Content | Select-Object -First 40",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Stop stale Vite process and start corrected local server",
+			"type": "shell",
+			"command": "$processes = Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' -and $_.CommandLine -match 'vite' }; if ($processes) { foreach ($p in $processes) { Stop-Process -Id $p.ProcessId -Force } }; Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; npm run dev",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Verify app serves HTML successfully",
+			"type": "shell",
+			"command": "Invoke-WebRequest -Uri 'http://localhost:5173' -UseBasicParsing | Select-Object -ExpandProperty Content | Select-Object -First 30",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Run final production build",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; npm run build",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Record final fix and push latest changes",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; @'\nFix local hosting and deployment config\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n'@ | Set-Content -Path '.git\\COMMIT_EDITMSG'; git add .; git commit -F .git\\COMMIT_EDITMSG; git push",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
 		}
 	]
 }
