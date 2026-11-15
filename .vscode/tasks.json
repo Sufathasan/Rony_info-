@@ -1,0 +1,181 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Check npm and node",
+			"type": "shell",
+			"command": "node --version; npm --version",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Create project folders",
+			"type": "shell",
+			"command": "$paths = @('C:\\Users\\FC\\Desktop\\Rony_Portfolio\\src\\components','C:\\Users\\FC\\Desktop\\Rony_Portfolio\\src\\sections','C:\\Users\\FC\\Desktop\\Rony_Portfolio\\src\\data','C:\\Users\\FC\\Desktop\\Rony_Portfolio\\src\\hooks','C:\\Users\\FC\\Desktop\\Rony_Portfolio\\public\\assets\\gallery','C:\\Users\\FC\\Desktop\\Rony_Portfolio\\public\\assets\\profile','C:\\Users\\FC\\Desktop\\Rony_Portfolio\\public\\assets\\logos','C:\\Users\\FC\\Desktop\\Rony_Portfolio\\public\\documents','.github\\workflows'); foreach ($p in $paths) { New-Item -ItemType Directory -Path $p -Force | Out-Null }; 'Done'",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Install project dependencies",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; npm install",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Install missing node types",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; npm install -D @types/node",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Ensure static asset folders exist",
+			"type": "shell",
+			"command": "$paths = @('C:\\Users\\FC\\Desktop\\Rony_Portfolio\\public\\documents','C:\\Users\\FC\\Desktop\\Rony_Portfolio\\.github\\workflows'); foreach ($p in $paths) { New-Item -ItemType Directory -Path $p -Force | Out-Null }; 'ready'",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Build the portfolio app",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; npm run build",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Install reportlab for CV PDF",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; python -m pip install reportlab",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Generate CV PDF",
+			"type": "shell",
+			"command": "$script = @'\nfrom reportlab.lib.pagesizes import A4\nfrom reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet\nfrom reportlab.lib import colors\nfrom reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, ListFlowable, ListItem\n\noutput_path = r'C:\\Users\\FC\\Desktop\\Rony_Portfolio\\public\\documents\\Md-Mahmudul-Hasan-Rony-CV.pdf'\n\nstyles = getSampleStyleSheet()\nstyles.add(ParagraphStyle(name='CVTitle', fontName='Helvetica-Bold', fontSize=24, leading=28, textColor=colors.HexColor('#0B1630'), spaceAfter=10))\nstyles.add(ParagraphStyle(name='CVSubtitle', fontName='Helvetica', fontSize=10.5, leading=15, textColor=colors.HexColor('#3A4A5C'), spaceAfter=12))\nstyles.add(ParagraphStyle(name='CVHeading', fontName='Helvetica-Bold', fontSize=12, leading=16, textColor=colors.HexColor('#0B1630'), spaceBefore=12, spaceAfter=6))\nstyles.add(ParagraphStyle(name='CVBody', fontName='Helvetica', fontSize=10.5, leading=15, textColor=colors.HexColor('#1E2A39'), spaceAfter=4))\nstyles.add(ParagraphStyle(name='CVList', fontName='Helvetica', fontSize=10.3, leading=14, leftIndent=18, bulletIndent=10, spaceAfter=4))\n\nstory = []\nstory.append(Paragraph('Md Mahmudul Hasan Rony', styles['CVTitle']))\nstory.append(Paragraph('Banking & Financial Services Professional | Strategic Alliance Specialist | Business Development Professional', styles['CVSubtitle']))\nstory.append(Paragraph('<b>Mobile:</b> +8801916077510 &nbsp;&nbsp; <b>Email:</b> ronybd900@gmail.com', styles['CVBody']))\nstory.append(Paragraph('<b>Address:</b> Gulshan Badda Link Road, Dhaka-1212, Bangladesh', styles['CVBody']))\nstory.append(Paragraph('<b>WhatsApp:</b> 01713116518 &nbsp;&nbsp; <b>LinkedIn:</b> linkedin.com/in/md-mahmudul-hasan-4ba2621b2', styles['CVBody']))\nstory.append(Spacer(1, 8))\n\nstory.append(Paragraph('Career Objective', styles['CVHeading']))\nstory.append(Paragraph('To contribute to Bangladesh\\'s financial ecosystem by building strategic partnerships, expanding financial inclusion, and creating sustainable growth opportunities for businesses, youth, and underserved communities through collaborative banking and financial services.', styles['CVBody']))\n\nstory.append(Paragraph('Professional Summary', styles['CVHeading']))\nstory.append(Paragraph('I have nearly ten years of professional experience in Bangladesh\\'s banking and financial sector, developing a strong understanding of how finance supports economic development, financial inclusion, and social progress. I focus on strategic alliances, merchant partnership development, business growth, corporate relationship management, and sustainable financial engagement.', styles['CVBody']))\n\nstory.append(Paragraph('Professional Experience', styles['CVHeading']))\nexperience_blocks = [\n    ('LankaBangla Finance PLC. | Assistant Relationship Manager (Senior Officer) | Strategic Alliance | 9 September 2024 – Present', ['Develop and maintain strategic partnerships with merchants and value-chain stakeholders.', 'Support relationship management and business development initiatives for financial and retail growth.', 'Coordinate with internal teams to align card and merchant programs with commercial objectives.']),\n    ('NRB Bank Limited | Incharge (Junior Officer) | Strategic Alliance Team | 31 August 2023 – 8 September 2024', ['Managed strategic alliance activities and merchant relationship efforts across partnership portfolios.', 'Worked closely with internal stakeholders to improve commercial engagement and partner performance.', 'Supported campaign planning and merchant-focused business development priorities.']),\n    ('LankaBangla Finance PLC. | Officer | Strategic Business Alliance, Card Centre | 1 January 2022 – 30 August 2023', ['Established and nurtured merchant partnerships for discount and promotional programs.', 'Negotiated commercial offers and assessed partner performance using transaction and spending data.', 'Worked with card operations, marketing, and call-center teams to deliver campaign execution.']),\n    ('LankaBangla Finance PLC. | Team Leader | Strategic Business Alliance, Card Centre | 1 August 2016 – 31 December 2021', ['Led merchant acquisition and strategic partnership development across high-value categories.', 'Negotiated exclusive discount, cashback, rewards, BOGO, and 0% EMI offers for card members.', 'Monitored campaign delivery, merchant performance, branding, and customer communication initiatives.']),\n    ('Bangladesh Bank | Intern | Accounts & Budgeting Department | July 2015 – September 2015', ['Supported departmental work in accounts and budgeting processes.', 'Learned about financial administration and institutional processes in a public financial environment.'])\n]\nfor title, points in experience_blocks:\n    story.append(Paragraph(f'<b>{title}</b>', styles['CVBody']))\n    story.append(ListFlowable([ListItem(Paragraph(point, styles['CVList'])) for point in points], bulletType='bullet', bulletText='•', leftIndent=18, spaceBefore=2, spaceAfter=4))\n\nstory.append(Paragraph('Professional Achievements', styles['CVHeading']))\nstory.append(Paragraph('• Attended Dine with Managing Director\\'s program at LankaBangla Finance in 2019 as a best performer in MOU partnership signing.', styles['CVList']))\nstory.append(Paragraph('• Achieved the merchant spending campaign target in 2018 and received an award from the Managing Director of LankaBangla Finance PLC.', styles['CVList']))\n\nstory.append(Paragraph('Education', styles['CVHeading']))\neducation_items = [\n    'Independent University, Bangladesh (IUB) — Bachelor of Business Administration (BBA), Major in Accounting, Minor in Human Resource Management (HRM), CGPA: 3.06 / 4.00, Passing Year: 2015',\n    'Govt. AsheK Mahmud College, Jamalpur — Higher Secondary Certificate (HSC), Group: Business Studies, CGPA: 3.60 / 5.00, Passing Year: 2010',\n    'Jamalpur Zilla School, Jamalpur — Secondary School Certificate (SSC), Group: Humanities, CGPA: 3.88 / 5.00, Passing Year: 2008'\n]\nfor item in education_items:\n    story.append(Paragraph(f'• {item}', styles['CVList']))\n\nstory.append(Paragraph('Professional Certifications', styles['CVHeading']))\nstory.append(Paragraph('• Basics of Leadership Management & Theories — UniAthena in partnership with Cambridge International Qualifications, UK — 26 April 2025', styles['CVList']))\nstory.append(Paragraph('• Artificial Intelligence: Preparing for the Future of Work — Alison — 1 May 2025', styles['CVList']))\n\nstory.append(Paragraph('Core Skills', styles['CVHeading']))\nskill_lines = [\n    'Strategic Alliance Management, Business Development, Merchant Acquisition, Corporate Relationship Management, Partnership Negotiation, Campaign Management, Customer Spending Analysis, Business Networking, Team Leadership, Brand Partnership Development',\n    'Microsoft Word, Microsoft Excel, Microsoft PowerPoint, Data Entry, Basic Computing, Keyboarding',\n    'English: Reading, Writing, Listening, Speaking; Bangla: Reading, Writing, Listening, Speaking'\n]\nfor item in skill_lines:\n    story.append(Paragraph(f'• {item}', styles['CVList']))\n\nstory.append(Paragraph('Professional References', styles['CVHeading']))\nstory.append(Paragraph('MD. Shafiqul Hasan — Head of Strategic Alliance & AVP, Card Division, NRB Bank Limited — Email: mdshafiqul.hassan@nrbbankbd.com — Mobile: 01709641642', styles['CVList']))\nstory.append(Paragraph('Mahfuzur Rahman — General Manager, Banking Inspection-4, Bangladesh Bank — Email: mmahfuzur.rahman@bb.org.bd — Mobile: 01912101515', styles['CVList']))\n\nstory.append(Paragraph('Global Youth Impact Summit 2027', styles['CVHeading']))\nstory.append(Paragraph('Selected / Registered International Delegate, representing Bangladesh at the Global Youth Impact Summit 2027 in Paris, France, scheduled for 25–28 March 2027. The summit will focus on inclusive and sustainable finance, youth leadership, international cooperation, and the United Nations SDGs.', styles['CVBody']))\n\ndoc = SimpleDocTemplate(output_path, pagesize=A4, leftMargin=30, rightMargin=30, topMargin=30, bottomMargin=30)\ndoc.build(story)\nprint('PDF generated:', output_path)\n'@\n$script | python -",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Final production build",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; npm run build",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Verify dist assets",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; Get-ChildItem -Recurse dist | Select-Object -ExpandProperty FullName",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Download key public images locally",
+			"type": "shell",
+			"command": "$root = 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; $profile = Join-Path $root 'public\\assets\\profile'; $gallery = Join-Path $root 'public\\assets\\gallery'; New-Item -ItemType Directory -Path $profile -Force | Out-Null; New-Item -ItemType Directory -Path $gallery -Force | Out-Null; $urls = @(\n  @{ path = Join-Path $profile 'portrait.jpg'; url = 'https://scontent.fzyl6-1.fna.fbcdn.net/v/t39.30808-6/481665623_9507799092633405_6031382996453195024_n.jpg?stp=dst-jpg_tt6&cstp=mx1206x2048&ctp=s1206x2048&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHXQ7T0LuIYMhpnnME4YVf8Rs2pOBBE-5dGzak4EET7l6oX0UuBUBhJfWZ72Pnea7ePlIkEENM3dLIt0t6xQ-9a&_nc_ohc=C9FV-uk0HKEQ7kNvwFRH_JS&_nc_oc=AdrB4EcdavAuN6nXxlwL4iwf284AcBPKRK0q11ZLb9ISw19-HDSahTjPRU-D9SyTiRM&_nc_zt=23&_nc_ht=scontent.fzyl6-1.fna.fbcdn.net' },\n  @{ path = Join-Path $profile 'family.jpg'; url = 'https://scontent.fzyl6-1.fna.fbcdn.net/v/t39.30808-6/899352791_1136970565604774_2891297306531195455_n.jpg' },\n  @{ path = Join-Path $profile 'summit.jpg'; url = 'https://scontent.fzyl6-1.fna.fbcdn.net/v/t39.30808-6/910026348_29327116163608404_8547740735684600586_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1440&ctp=p526x296&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFM-0-l7UZUyFljQPpcMRqEcbw2mK44qnxxvDaYrjiqfJ5oG--5gjrGmJWNd3SNRHDiV9EYQni8_oYDaSMxCcQa&_nc_ohc=sclkKq7I5NUQ7kNvwGKpjNe&_nc_oc=AdrpawQ1K9aD1lIgf_jOfW5NUzLEuJyW3tu7ChsA9g8aUGji4Ywz0z9O0ogX1Ac5nqc&_nc_zt=23&_nc_ht=scontent.fzyl6-1.fna.fbcdn.net' },\n  @{ path = Join-Path $gallery '1.jpg'; url = 'https://scontent.fzyl6-1.fna.fbcdn.net/v/t39.30808-6/476075492_122223321596226866_241407265650534579_n.jpg' },\n  @{ path = Join-Path $gallery '2.jpg'; url = 'https://scontent.fzyl6-1.fna.fbcdn.net/v/t39.30808-6/475548709_122223322004226866_1193848017080669271_n.jpg' },\n  @{ path = Join-Path $gallery '3.jpg'; url = 'https://scontent.fzyl6-1.fna.fbcdn.net/v/t39.30808-6/475416864_122223322178226866_1356486654176371750_n.jpg' }\n);\nforeach ($item in $urls) {\n  try {\n    Invoke-WebRequest -Uri $item.url -OutFile $item.path -UseBasicParsing | Out-Null\n    Write-Output \"Downloaded $($item.path)\"\n  } catch {\n    Write-Output \"Failed: $($item.url)\"\n  }\n};\n'ready'",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Inspect existing project and git state",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; git status -sb; Write-Host '---'; git remote -v; Write-Host '---'; Get-ChildItem -Force",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Check GitHub repo access and authentication",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; gh auth status; Write-Host '---'; git ls-remote https://github.com/Sufathasan/Rony_info-.git HEAD",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Check target GitHub repository details",
+			"type": "shell",
+			"command": "gh repo view Sufathasan/Rony_info- --json name,description,defaultBranchRef,url,isPrivate,visibility",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Initialize git repository and push project to GitHub",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; git init; git branch -M main; git remote add origin https://github.com/Sufathasan/Rony_info-.git; git add .; git commit -m \"Initial portfolio deployment\" -m \"Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\"; git push -u origin main",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Initialize git repo and commit project",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; git init; git branch -M main; git remote add origin https://github.com/Sufathasan/Rony_info-.git; git config user.name 'Copilot'; git config user.email '223556219+Copilot@users.noreply.github.com'; git add .; git commit -m \"Initial portfolio deployment\" -m 'Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>'; git push -u origin main",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Create git commit with trailer",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; git add .; git commit -m \"Initial portfolio deployment\" --trailer \"Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\"",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Test escaping in PowerShell commit trailer",
+			"type": "shell",
+			"command": "Write-Host \"Co-authored-by: Copilot `<223556219+Copilot@users.noreply.github.com>`\"",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Clean generated artifacts and commit project",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; Remove-Item -Force 'vite.config.js','vite.config.d.ts','tsconfig.app.tsbuildinfo','tsconfig.node.tsbuildinfo' -ErrorAction SilentlyContinue; git add .; git commit -m \"Initial portfolio deployment\" -m \"Co-authored-by: Copilot `<223556219+Copilot@users.noreply.github.com>`\"",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Write commit message to file and commit",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; Set-Content -Path '.git\\COMMIT_EDITMSG' -Value \"Initial portfolio deployment`n`nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\"; git add .; git commit -F .git\\COMMIT_EDITMSG",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Test here-string writing for commit message",
+			"type": "shell",
+			"command": "@'\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n'@ | Write-Output",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Commit the project to git with trailer",
+			"type": "shell",
+			"command": "Set-Location 'C:\\Users\\FC\\Desktop\\Rony_Portfolio'; @'\nInitial portfolio deployment\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>\n'@ | Set-Content -Path '.git\\COMMIT_EDITMSG'; git add .; git commit -F .git\\COMMIT_EDITMSG",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
